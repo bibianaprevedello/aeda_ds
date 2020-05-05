@@ -1,11 +1,5 @@
-# from lists.list import List
-# from exceptions import *
-# from lists.nodes import SingleListNode
 from nodes import SingleListNode
 from list import List
-
-# import sys
-# sys.path.append('../')
 from exceptions import *
 from sl_iterator import Iterator
 
@@ -31,7 +25,6 @@ class SinglyLinkedList(List):
         else:
             raise EmptyListException("List is empty.")
 
-
     # Returns the last element of the list.
     # Throws EmptyListException.
     def get_last(self):
@@ -40,7 +33,6 @@ class SinglyLinkedList(List):
         else:
             raise EmptyListException("List is empty.")
             
-
     # Returns the element at the specified position in the list.
     # Range of valid positions: 0, ..., size()-1.
     def get(self, position):
@@ -66,7 +58,6 @@ class SinglyLinkedList(List):
                 return i
             current_node = current_node.get_next()
         return -1
-
 
     # Inserts the specified element at the first position in the list.
     def insert_first(self, element):
@@ -112,7 +103,6 @@ class SinglyLinkedList(List):
                     current.set_next(new)
                 current = current.get_next()
 
-
             self.num_elements += 1
 
     # Removes and returns the element at the first position in the list.
@@ -150,7 +140,6 @@ class SinglyLinkedList(List):
     # Removes and returns the element at the specified position in the list.
     # Range of valid positions: 0, ..., size()-1.
     # Throws InvalidPositionException.
-   
     def remove(self, position):
         if position > self.num_elements or position < 0:
             raise InvalidPositionException
@@ -163,9 +152,6 @@ class SinglyLinkedList(List):
 
             for i in range(position):
                 if i == position-1:
-                    # proximo = current.get_next()
-                    # proximo_2 = proximo.get_next()
-                    # current.set_element(proximo_2)
                     current.set_next(current.get_next().get_next())
                 current = current.get_next()
 
@@ -177,88 +163,15 @@ class SinglyLinkedList(List):
         self.tail = None
         self.num_elements = 0
 
+    # Returns an iterator of the elements in the list (in proper sequence).
+    def iterator(self):
+        return Iterator(self.head)
+
     # Print the list
     def print_all(self):
-        # for i in self.iterator():
-        #     print(i)
-
         it = self.iterator()
         while True:
             try:
                 print(it.next())
             except NoSuchElementException:
                 break
-
-        # current = self.head
-        # for i in range(self.num_elements):
-        #     print(current.get_element())
-        #     current = current.get_next()
-
-    # Returns an iterator of the elements in the list (in proper sequence).
-    def iterator(self):
-        return Iterator(self.head)
-
-a = SinglyLinkedList()
-
-print(a.head)
-print(a.tail)
-print(a.num_elements)
-
-a.insert_last(1)
-print(a.head, a.head.get_element(), a.head.next_node)
-print(a.tail, a.tail.get_element(), a.tail.next_node)
-
-a.insert_last(2)
-print(a.head, a.head.get_element(), a.head.next_node)
-print(a.tail, a.tail.get_element(), a.tail.next_node)
-
-a.insert_last(3)
-print(a.head, a.head.get_element(), a.head.next_node)
-print(a.tail, a.tail.get_element(), a.tail.next_node)
-
-print("\nAntes")
-a.print_all()
-
-a.remove(1)
-
-print("\nDepois")
-a.print_all()
-
-# print("Test iterator")
-# it = a.iterator()
-# print(it)
-
-# while True:
-#     print(it.next())
-
-# Testa inserir um elemento no início
-# print("Testa inserir um elemento no início")
-
-# a.remove_first()
-# print(a.head, a.head.get_element(), a.head.next_node)
-# print(a.tail, a.tail.get_element(), a.tail.next_node)
-
-# b = a.remove_last()
-# print(a.head, a.head.get_element(), a.head.next_node)
-# print(a.tail, a.tail.get_element(), a.tail.next_node)
-# print(b.element, b.next_node)
-# print(a.tail.element, a.tail.next_node)
-
-# b = a.get(2)
-# print(b)
-# print(a.get(2))
-# print(a.get)
-# a.make_empty()
-
-# print(a.head)
-
-# print(a.find(4))
-
-# vagao1 = Vagao("ferro", maquina)
-
-# # vagao2 = Vagao("", None)
-# # vagao2.set_element("milho")
-# # vagao2.set_next(vagao1.get_next())
-# vagao2 = Vagao("milho", vagao1.get_next())
-
-# vagao1.set_next(vagao2)
