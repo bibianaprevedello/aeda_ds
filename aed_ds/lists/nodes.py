@@ -12,8 +12,8 @@ class SingleListNode:
     def set_element(self, element):
         self.element = element
     
-    def set_next(self, next):
-        self.next_node = next
+    def set_next(self, next_node):
+        self.next_node = next_node
 
 class DoubleListNode(SingleListNode):
     def __init__(self, element, next_node, previous_node):
